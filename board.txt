@@ -1,0 +1,39 @@
+<t=k n=Kitchen r=1>
+<t=0 n=Wall r=2>
+<t=. n=Passageway r=0>
+<t=b n=Ball-Room r=1>
+<t=s n=Start r=1>
+<t=d n=Dining-Room r=1>
+<t=o n=Lounge r=1>
+<t=h n=Hall r=1>
+<t=t n=Study r=1>
+<t=l n=Library r=1>
+<t=i n=Billiards-Room r=1>
+<t=c n=Conservatory r=1>
+<t=s n=Start r=1>
+<b w=24 h=25 m=
+000000000sbbbbs000000000
+kkkkkk0...bbbb...0cccccc
+kkkkkk..bbbbbbbb..cccccc
+kkkkkk..bbbbbbbb..cccccc
+kkkkkk..bbbbbbbb..cccccc
+kkkkkk..bbbbbbbb...cccc0
+0kkkkk..bbbbbbbb.......s
+........bbbbbbbb.......0
+0.................iiiiii
+ddddd.............iiiiii
+dddddddd..00000...iiiiii
+dddddddd..00000...iiiiii
+dddddddd..00000...iiiiii
+dddddddd..00000........0
+dddddddd..00000...lllll0
+dddddddd..00000..lllllll
+0.........00000..lllllll
+s................lllllll
+0........hhhhhh...lllll0
+ooooooo..hhhhhh........s
+ooooooo..hhhhhh........0
+ooooooo..hhhhhh..ttttttt
+ooooooo..hhhhhh..ttttttt
+ooooooo..hhhhhh..ttttttt
+oooooo0s0hhhhhh0.0tttttt>

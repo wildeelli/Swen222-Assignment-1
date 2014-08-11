@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import board.BoardLoader;
+
 
 public class ProgMain implements MouseListener, MenuListener, ActionListener {
 
@@ -83,6 +85,9 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		
 		
 		window.setVisible(true);
+		
+		new BoardLoader().loadBoard("board.txt");
+		
 	}
 	
 	
