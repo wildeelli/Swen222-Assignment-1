@@ -2,9 +2,7 @@ package Tests;
 
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import GamePieces.Card;
 
 public class CardTests {
@@ -80,6 +78,15 @@ public class CardTests {
 		}
 		Card cd3 = new Card("Jhon", null, Card.Type.WEAPON);
 		if(cd.equals(cd3)){
+			fail();
+		}
+		Card cd4 = new Card("Nife", null, Card.Type.WEAPON);
+		if(cd.equals(cd4)){
+			fail();
+		}
+
+		Card cd5 = new Card("Fred", null, Card.Type.PERSON);
+		if(cd.equals(cd5)){
 			fail();
 		}
 	}
