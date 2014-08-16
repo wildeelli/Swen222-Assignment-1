@@ -1,25 +1,20 @@
+package Tiles;
 
-public class Room implements Tile {
-	
-	private final String name;
-	
-	public Room(String roomName){
-		this.name = roomName;
-	}
+public class Wall implements Tile {
 
 	@Override
 	public boolean moveable() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public char tile() {
-		return '.';
+		return '#';
 	}
 
 	@Override
 	public boolean isRoom() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -29,13 +24,13 @@ public class Room implements Tile {
 
 	@Override
 	public String roomName() {
-		return this.name;
+		return "Wall";
 	}
 
 	@Override
 	public String description() {
 		// TODO Auto-generated method stub
-		return "This is the " + this.name + " room.";
+		return "This is a wall, you can't walk through it, Yet.";
 	}
 
 }

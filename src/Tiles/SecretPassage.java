@@ -1,3 +1,4 @@
+package Tiles;
 
 public class SecretPassage implements Tile {
 	

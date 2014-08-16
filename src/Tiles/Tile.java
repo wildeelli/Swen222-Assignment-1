@@ -1,3 +1,4 @@
+package Tiles;
 
 public interface Tile {
 	boolean moveable();
