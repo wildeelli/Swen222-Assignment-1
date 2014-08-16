@@ -1,3 +1,5 @@
+import Tiles.*;
+
 
 public class Person {
 	private Tile loc;
