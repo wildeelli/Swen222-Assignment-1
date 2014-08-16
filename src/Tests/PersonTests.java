@@ -17,4 +17,14 @@ public class PersonTests {
 			fail();
 		}
 	}
+	
+	@Test public void testDice(){
+		Person per = new Person("Purple", null, null);
+		for(int i = 0; i < 100; i++){
+			int j = per.rollDice();
+			if(j <=1 || j > 12){
+				fail("Dice failed to roll valied numbers");
+			}
+		}
+	}
 }

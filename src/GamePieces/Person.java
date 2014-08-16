@@ -1,4 +1,6 @@
 package GamePieces;
+import java.util.Random;
+
 import Tiles.*;
 
 
@@ -6,6 +8,9 @@ public class Person {
 	private Tile loc;
 	private String col;
 	private Hand hand;
+	private Random diceOne;
+	private Random diceTwo;
+	private int movesLeft;
 	
 	/**
 	 * 
@@ -17,6 +22,8 @@ public class Person {
 		this.col = col;
 		this.loc = loc;
 		this.hand = h;
+		this.diceOne = new Random();
+		this.diceTwo = new Random();
 	}
 	
 	/**
@@ -30,6 +37,16 @@ public class Person {
 	 * @return The colour of the piece
 	 */
 	public String getCol(){return col;}
+
+	/**
+	 * Rolls the dice and updates how many moves the player has. 
+	 * Should only be called at the start of the players turn.
+	 * @return The number of moves the player has for this turn
+	 */
+	public int rollDice(){
+		movesLeft = (diceOne.nextInt(6)+1) + (diceTwo.nextInt(6)+1);
+		return movesLeft;
+	}
 	
 	/**
 	 * moves the piece to said tile
