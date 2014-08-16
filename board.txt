@@ -10,7 +10,6 @@
 <t=l n=Library r=1>
 <t=i n=Billiards-Room r=1>
 <t=c n=Conservatory r=1>
-<t=s n=Start r=1>
 <b w=24 h=25 m=
 000000000sbbbbs000000000
 kkkkkk0...bbbb...0cccccc

@@ -37,9 +37,9 @@ public class BoardLoader {
 		file.deleteCharAt(0);
 		file.deleteCharAt(file.length()-1);
 		String lines[] = file.toString().split("><");
-		System.out.println(lines.length);
+//		System.out.println(lines.length);
 		for (String s: lines){
-			System.out.println(s);
+//			System.out.println(s);
 			String[] line = s.split(" ");
 			if (line[0].startsWith("t")){
 				char token='\0';

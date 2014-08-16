@@ -9,16 +9,11 @@ public class Corridor implements Tile {
 
 	@Override
 	public char tile() {
-		return ',';
+		return ' ';
 	}
 
 	@Override
 	public boolean isRoom() {
-		return false;
-	}
-
-	@Override
-	public boolean isPool() {
 		return false;
 	}
 

@@ -18,11 +18,6 @@ public class Wall implements Tile {
 	}
 
 	@Override
-	public boolean isPool() {
-		return false;
-	}
-
-	@Override
 	public String roomName() {
 		return "Wall";
 	}

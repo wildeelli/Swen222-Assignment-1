@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -22,6 +24,8 @@ import javax.swing.JTextField;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import board.Board;
+import board.BoardCanvas;
 import board.BoardLoader;
 
 
@@ -31,14 +35,19 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 	private JMenu menu;
 	private JMenuItem[] menus;
 	private JButton[] buttons;
-	private Canvas canvas;
+	private BoardCanvas canvas;
 	private JTextField textField;
 	private JRadioButton[] radios;
 	private JFrame window;
 	
+	private final Board board;
+	
 	
 	
 	public ProgMain() {
+
+		board = new BoardLoader().loadBoard("board.txt");
+		
 		BorderLayout b = new BorderLayout();
 		window = new JFrame("Swen 222 Assignment");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,16 +68,16 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 //		menuBar.setVisible(true);
 		menu = new JMenu("Game");
 		menuBar.add(menu);
-		JPanel upperPanel = new JPanel();
+//		JPanel upperPanel = new JPanel();
 //		upperPanel.setSize(640,400);
-		upperPanel.setPreferredSize(new Dimension( 640, 400));
-		canvas = new Canvas();
-//		canvas.setSize(640, 400);
-		canvas.setBackground(Color.cyan);
+		canvas = new BoardCanvas(board);
+		canvas.setPreferredSize(new Dimension( 640, 400));
+		canvas.setSize(640, 400);
+//		canvas.setBackground(Color.cyan);
 		// TODO: pick sizes for all the elements
 //		canvas.setPreferredSize(new Dimension(640,  480));
-		upperPanel.add(canvas);
-		window.add(upperPanel, BorderLayout.CENTER);
+//		upperPanel.add(canvas);
+		window.add(canvas, BorderLayout.CENTER);
 		
 		JPanel lowerPanel = new JPanel();
 		JPanel dicePanel = new JPanel();
@@ -86,10 +95,9 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		
 		window.setVisible(true);
 		
-		new BoardLoader().loadBoard("board.txt");
-		
+		// remove this line when board construction is complete
+//		System.exit(0);
 	}
-	
 	
 	
 	public static void main(String[] args) {

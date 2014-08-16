@@ -47,12 +47,6 @@ public class SecretPassage implements Tile {
 	}
 
 	@Override
-	public boolean isPool() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public String roomName() {
 		// TODO Auto-generated method stub
 		return this.room.toString();
