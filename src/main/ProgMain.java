@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.BorderLayout;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
@@ -72,6 +71,7 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 //		upperPanel.setSize(640,400);
 		canvas = new BoardCanvas(board);
 		canvas.setPreferredSize(new Dimension( 640, 400));
+		canvas.setMinimumSize(new Dimension(100,100));
 		canvas.setSize(640, 400);
 //		canvas.setBackground(Color.cyan);
 		// TODO: pick sizes for all the elements

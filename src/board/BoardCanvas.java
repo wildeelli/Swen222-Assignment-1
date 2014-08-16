@@ -1,6 +1,5 @@
 package board;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -9,7 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 
 
-public class BoardCanvas extends JComponent{
+public class BoardCanvas extends JComponent {
 	// this stops java complaining
 	private static final long serialVersionUID = -2936506367154755594L;
 
@@ -32,5 +31,4 @@ public class BoardCanvas extends JComponent{
 		g.drawImage(b, 0, 0, null);
 		
 	}
-
 }
