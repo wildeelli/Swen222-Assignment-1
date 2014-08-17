@@ -1,6 +1,7 @@
 package main;
 
 import game.newPlayerWindow;
+import game.rumorWindow;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -97,7 +98,18 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		
 		window.setVisible(true);
 		
-		newPlayerWindow w = new newPlayerWindow(3, window);
+//		newPlayerWindow w = new newPlayerWindow(3, window);
+//		rumorWindow rum= new rumorWindow(board.ballRoom, window);
+		String[] rum = rumorWindow.makeRumor(board.ballRoom, window);
+//		while (!rum.hasRumor()){
+//			System.out.println("crap");
+//			rum.is
+//		} 
+		System.out.println("done");
+//		System.out.printf("%s %s\n", rum.getRumor()[0], rum.getRumor()[1], rum.getRumor()[2]);
+		System.out.printf("%s %s %s\n", rum[0], rum[1], rum[2]);
+	
+		
 		
 		// remove this line when board construction is complete
 //		System.exit(0);

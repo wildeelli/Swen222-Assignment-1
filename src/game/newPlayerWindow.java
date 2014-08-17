@@ -151,6 +151,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	 * @return
 	 */
 	public boolean allPlayersDone(){
+		setTitle(getTitle());
 		return playerRemain==players;
 	}
 	
@@ -158,7 +159,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	// TODO: change to player type
 	public GamePieces.Person[] players(){
 		if (playerRemain!=0) throw new IllegalStateException("Not ready to return players");
-		return null;
+		return playerList;
 	}
 	
 
