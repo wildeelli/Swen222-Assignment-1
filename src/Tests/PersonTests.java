@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 public class PersonTests {
 	@Test public void testCol(){
-		Person per = new Person("Orange", null);
-		if(!per.getCol().equals("Orange")){
+		Person per = new Person("fred","Orange", null);
+		if(!per.getName().equals("Orange")){
 			fail();
 		}
-		if(per.getCol().equals("Fredrico")){
+		if(per.getName().equals("Fredrico")){
 			fail();
 		}
 	}
 	
 	@Test public void testDice(){
-		Person per = new Person("Purple", null);
+		Person per = new Person("Mable","Purple", null);
 		for(int i = 0; i < 100; i++){
 			int j = per.rollDice();
 			if(j <=1 || j > 12){

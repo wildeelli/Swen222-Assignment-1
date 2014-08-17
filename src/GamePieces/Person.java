@@ -8,6 +8,7 @@ import Tiles.*;
 
 public class Person {
 	private Tile loc;
+	private String name;
 	private String col;
 	private List<Card> hand;
 	private Random diceOne;
@@ -20,7 +21,8 @@ public class Person {
 	 * @param loc Tile in which the person starts from
 	 * @param h The person's hand
 	 */
-	public Person(String col, Tile loc){
+	public Person(String name, String col, Tile loc){
+		this.name = name;
 		this.col = col;
 		this.loc = loc;
 		this.hand = new ArrayList<Card>();
@@ -43,6 +45,12 @@ public class Person {
 	 * @return The colour of the piece
 	 */
 	public String getCol(){return col;}
+	
+	/**
+	 * Get's the player of the piece's name
+	 * @return The players name
+	 */
+	public String getName(){return name;}
 
 	/**
 	 * Rolls the dice and updates how many moves the player has. 
