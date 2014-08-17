@@ -14,8 +14,10 @@ import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -95,8 +97,13 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	
 	private void nextPlayer(){
 		String playerName = enterName.getText();
-		if (playerName == null || playerName.length()==0)
+		if (playerName == null || playerName.length()==0){
+			JOptionPane.showMessageDialog(this,
+				    "Player Name is too short.",
+				    "Inane warning",
+				    JOptionPane.WARNING_MESSAGE);
 			return;
+		}
 		String playerToken = selectedRadioButton();
 		// TODO: now we need to add this 'player' to the list of players
 		
