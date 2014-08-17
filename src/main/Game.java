@@ -73,6 +73,7 @@ public class Game {
 		murder = new Acusation(weapons.remove(0), people.remove(0), rooms.remove(0));
 		
 		//finally merges the three lists to a single list
+		cards = new ArrayList<>();
 		cards.addAll(weapons);
 		cards.addAll(rooms);
 		cards.addAll(people);
