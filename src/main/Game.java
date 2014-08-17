@@ -104,9 +104,11 @@ public class Game {
 	
 	/**
 	 * gets the current player
-	 * @return the current player
+	 * @return the current player or null if no players
 	 */
 	public Person getCurPlayer(){
+		if(players.isEmpty())
+			return null;
 		return players.get(currentPlayer);
 	}
 	
@@ -133,6 +135,8 @@ public class Game {
 	 * @return true if the player can move, false otherwise
 	 */
 	public boolean Move(int x, int y, Board board){
+		if(players.isEmpty())
+			return false;
 		return players.get(currentPlayer).move(x,y,board);
 	}
 	
@@ -140,6 +144,8 @@ public class Game {
 	 * ends the turn of the current player
 	 */
 	public void endTurn(){
+		if(players.isEmpty())
+			return;
 		if(currentPlayer < players.size()){
 			currentPlayer++;
 		}
