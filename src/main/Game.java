@@ -96,6 +96,12 @@ public class Game {
 	}
 	
 	/**
+	 * get the players of the game
+	 * @return The players in the game
+	 */
+	public List<Person> getPlayers(){ return players;}
+	
+	/**
 	 * gets the current player
 	 * @return the current player
 	 */
