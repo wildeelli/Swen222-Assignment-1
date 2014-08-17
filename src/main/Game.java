@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import board.Board;
 import GamePieces.Acusation;
 import GamePieces.Card;
 import GamePieces.Person;
@@ -121,8 +122,8 @@ public class Game {
 	 * @param tile The tile to move to
 	 * @return true if the player can move, false otherwise
 	 */
-	public boolean Move(Tile tile){
-		return players.get(currentPlayer).move(tile);
+	public boolean Move(int x, int y, Board board){
+		return players.get(currentPlayer).move(x,y,board);
 	}
 	
 	/**

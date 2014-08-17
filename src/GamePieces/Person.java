@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import board.Board;
 import Tiles.*;
 
 
 public class Person {
-	private Tile loc;
 	private int xloc, yloc;
 	private String name;
 	private String col;
@@ -40,11 +40,6 @@ public class Person {
 		hand.addAll(cards);
 	}
 	
-	/**
-	 * Get's the tile the person is on
-	 * @return the tile the piece is currently on
-	 */
-	public Tile getLoc(){return loc;}
 	
 	/**
 	 * @return the x Location on the board of the player
@@ -97,8 +92,12 @@ public class Person {
 	 * @param newT the tile the piece is moving too
 	 * @return True if the player moves. False if the player does not have enough on dice to move
 	 */
-	public boolean move(Tile newT){
-		//TODO: route finding to get from tile to newT
+	public boolean move(int x, int y,Board board){
+		if(board.canMoveTo(this, x, y)){
+			this.xloc = x;
+			this.yloc = y;
+			return true;
+		}
 		return false;
 	}
 	
