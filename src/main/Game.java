@@ -155,6 +155,13 @@ public class Game {
 	}
 	
 	/**
+	 * makes the current player roll the dice
+	 */
+	public void rollDice(){
+		players.get(currentPlayer).rollDice();
+	}
+	
+	/**
 	 * ends the turn of the current player
 	 */
 	public void endTurn(){
