@@ -8,12 +8,14 @@ import java.util.List;
 import GamePieces.Acusation;
 import GamePieces.Card;
 import GamePieces.Person;
+import Tiles.Tile;
 
 public class Game {
 	
 	private List<Person> players;
 	private List<Card> cards;
 	private Acusation murder;
+	private int currentPlayer;
 	
 	
 	
@@ -23,6 +25,7 @@ public class Game {
 		
 		//Shuffles the cards, and hands them out to players
 		distributCards();
+		currentPlayer = 0;
 	}
 	
 	/**
@@ -94,6 +97,42 @@ public class Game {
 				cards.remove(0);
 			}
 			player.giveCards(hand);
+		}
+	}
+	
+	/**
+	 * gets the current player
+	 * @return the current player
+	 */
+	public Person getCurPlayer(){
+		return players.get(currentPlayer);
+	}
+	
+	/**
+	 * makes an accusation either winning the game, or removing the player
+	 * @return tru if the game is won. False if the player is removed from play
+	 */
+	public boolean MakeAcusation(){
+		return false;
+	}
+	/**
+	 * moves the player to the inputed tile
+	 * @param tile The tile to move to
+	 * @return true if the player can move, false otherwise
+	 */
+	public boolean Move(Tile tile){
+		return players.get(currentPlayer).move(tile);
+	}
+	
+	/**
+	 * ends the turn of the current player
+	 */
+	public void endTurn(){
+		if(currentPlayer < players.size()){
+			currentPlayer++;
+		}
+		else{
+			currentPlayer =0;
 		}
 	}
 }
