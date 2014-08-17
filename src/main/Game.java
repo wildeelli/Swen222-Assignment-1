@@ -67,10 +67,7 @@ public class Game {
 		Collections.shuffle(people);
 		
 		//creates the correct acusation & removes those cards from the list
-		murder = new Acusation(weapons.get(0), people.get(0), rooms.get(0));
-		weapons.remove(0);
-		people.remove(0);
-		rooms.remove(0);
+		murder = new Acusation(weapons.remove(0), people.remove(0), rooms.remove(0));
 		
 		//finally merges the three lists to a single list
 		cards.addAll(weapons);
@@ -89,12 +86,10 @@ public class Game {
 		for(Person player: players){
 			ArrayList<Card> hand = new ArrayList<Card>();
 			for(int i = 0; i <= numCards; i++){
-				hand.add(cards.get(0));
-				cards.remove(0);
+				hand.add(cards.remove(0));
 			}
 			if(spareCards >= 1){
-				hand.add(cards.get(0));
-				cards.remove(0);
+				hand.add(cards.remove(0));
 			}
 			player.giveCards(hand);
 		}
@@ -110,7 +105,7 @@ public class Game {
 	
 	/**
 	 * makes an accusation either winning the game, or removing the player
-	 * @return tru if the game is won. False if the player is removed from play
+	 * @return true if the game is won. False if the player is removed from play
 	 */
 	public boolean MakeAcusation(){
 		return false;
