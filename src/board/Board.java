@@ -194,6 +194,7 @@ public class Board {
 		}
 		
 	}
+	
 	/**
 	 * Is the tile at (x,y) a room
 	 * 
@@ -208,6 +209,16 @@ public class Board {
 	 */
 	public boolean canMoveTo(Person p, int x, int y){
 		return false;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return The tile at (x,y), or <b><i>null</i></b> if no tile
+	 */
+	public Tile tileAt(int x, int y){
+		return null;
 	}
 	
 	/**
@@ -275,6 +286,12 @@ public class Board {
 		
 	}
 	
+	/**
+	 * This should probably be scrapped <br>
+	 * But I wanted the tiles on the board to be distinct from the 'room' type tiles
+	 * @author Bandit
+	 *
+	 */
 	private class boardTile {
 		protected final Tile tile;
 		
