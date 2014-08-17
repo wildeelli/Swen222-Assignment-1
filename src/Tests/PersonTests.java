@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class PersonTests {
 	@Test public void testCol(){
-		Person per = new Person("Orange", null, new ArrayList<Card>());
+		Person per = new Person("Orange", null);
 		if(!per.getCol().equals("Orange")){
 			fail();
 		}
@@ -18,7 +18,7 @@ public class PersonTests {
 	}
 	
 	@Test public void testDice(){
-		Person per = new Person("Purple", null, null);
+		Person per = new Person("Purple", null);
 		for(int i = 0; i < 100; i++){
 			int j = per.rollDice();
 			if(j <=1 || j > 12){

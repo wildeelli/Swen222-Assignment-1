@@ -1,4 +1,5 @@
 package GamePieces;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -19,12 +20,16 @@ public class Person {
 	 * @param loc Tile in which the person starts from
 	 * @param h The person's hand
 	 */
-	public Person(String col, Tile loc, List<Card> h){
+	public Person(String col, Tile loc){
 		this.col = col;
 		this.loc = loc;
-		this.hand = h;
+		this.hand = new ArrayList<Card>();
 		this.diceOne = new Random();
 		this.diceTwo = new Random();
+	}
+	
+	public void giveCards(List<Card> cards){
+		hand.addAll(cards);
 	}
 	
 	/**
