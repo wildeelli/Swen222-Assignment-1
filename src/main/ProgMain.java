@@ -114,14 +114,15 @@ public class ProgMain implements MouseListener, ActionListener {
 		
 
 		
-		Integer s = (Integer)JOptionPane.showInputDialog(
+		Integer s=null;
+		while ((s= (Integer)JOptionPane.showInputDialog(
 		                    window,
 		                    "How many Players in the game?",
 		                    "Customized Dialog",
 		                    JOptionPane.PLAIN_MESSAGE,
 		                    null,
 		                    possibilities,
-		                    1);
+		                    1))==null);
 		window.setEnabled(false);
 		game = new Game(s);
 		window.setEnabled(true);
@@ -232,14 +233,15 @@ public class ProgMain implements MouseListener, ActionListener {
 						new Card(sug[2], null, Card.Type.PERSON));
 			}
 		} else if (m.getText().equals("New Game")){
-			Integer s = (Integer)JOptionPane.showInputDialog(
-                    window,
-                    "How many Players in the game?",
-                    "Customized Dialog",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    possibilities,
-                    1);
+			Integer s=null;
+			while ((s= (Integer)JOptionPane.showInputDialog(
+			                    window,
+			                    "How many Players in the game?",
+			                    "Customized Dialog",
+			                    JOptionPane.PLAIN_MESSAGE,
+			                    null,
+			                    possibilities,
+			                    1))==null);
 			window.setEnabled(false);
 			game = new Game(s);
 			window.setEnabled(true);
