@@ -6,7 +6,6 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import sun.security.util.Length;
 import Tiles.Corridor;
 import Tiles.Doorway;
 import Tiles.Room;
