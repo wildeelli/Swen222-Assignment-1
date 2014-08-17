@@ -6,8 +6,6 @@ import game.rumorWindow;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.LayoutManager;
-import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -21,40 +19,43 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 
+import GamePieces.Card;
+import GamePieces.Person;
+import Tiles.Room;
+import Tiles.Tile;
 import board.Board;
 import board.BoardCanvas;
 import board.BoardLoader;
 
 
-public class ProgMain implements MouseListener, MenuListener, ActionListener {
+public class ProgMain implements MouseListener, ActionListener {
 
 	private JMenuBar menuBar;
 	private JMenu menu;
 	private JMenuItem[] menus;
 	private JButton[] buttons;
 	private BoardCanvas canvas;
-	private JTextField textField;
-	private JRadioButton[] radios;
+//	private JTextField textField;
+//	private JRadioButton[] radios;
 	private JFrame window;
 	
 	public static Board board;
 	
+	private Game game;
 	
 	
 	public ProgMain() {
 
 		board = new BoardLoader().loadBoard("board.txt");
-		
+		// create a window
 		BorderLayout b = new BorderLayout();
 		window = new JFrame("Swen 222 Assignment");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLayout(b);
 //		window.setResizable(false);
+		
+		// create some buttons
 		menuBar = new JMenuBar();
 		menu = new JMenu("File");
 //		menu.addMenuListener(this);
@@ -69,9 +70,18 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		window.setJMenuBar(menuBar);
 //		menuBar.setVisible(true);
 		menu = new JMenu("Game");
+		
+		menuItem = new JMenuItem("Make Suggestion");
+		menuItem.addActionListener(this);
+		menu.add(menuItem);
+		
+		menuItem = new JMenuItem("Make Accusation");
+		menuItem.addActionListener(this);
+		menu.add(menuItem);
+		
 		menuBar.add(menu);
-//		JPanel upperPanel = new JPanel();
-//		upperPanel.setSize(640,400);
+		
+		//create the drawable area
 		canvas = new BoardCanvas(board);
 		canvas.setPreferredSize(new Dimension( 640, 400));
 		canvas.setMinimumSize(new Dimension(100,100));
@@ -82,6 +92,7 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 //		upperPanel.add(canvas);
 		window.add(canvas, BorderLayout.CENTER);
 		
+		// make the bit on the bottom of the window
 		JPanel lowerPanel = new JPanel();
 		JPanel dicePanel = new JPanel();
 //		dicePanel.setBackground(Color.black);
@@ -98,16 +109,22 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		
 		window.setVisible(true);
 		
+		// here we make a new game
+		game = new Game();
+		Person p = game.getCurPlayer();
+		
+		
+		
 //		newPlayerWindow w = new newPlayerWindow(3, window);
 //		rumorWindow rum= new rumorWindow(board.ballRoom, window);
-		String[] rum = rumorWindow.makeRumor(board.ballRoom, window);
+//		String[] rum = rumorWindow.makeRumor(board.ballRoom, window);
 //		while (!rum.hasRumor()){
 //			System.out.println("crap");
 //			rum.is
 //		} 
-		System.out.println("done");
+//		System.out.println("done");
 //		System.out.printf("%s %s\n", rum.getRumor()[0], rum.getRumor()[1], rum.getRumor()[2]);
-		System.out.printf("%s %s %s\n", rum[0], rum[1], rum[2]);
+//		System.out.printf("%s %s %s\n", rum[0], rum[1], rum[2]);
 	
 		
 		
@@ -161,35 +178,52 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		
 	}
 
-
-
-	@Override
-	public void menuCanceled(MenuEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void menuDeselected(MenuEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void menuSelected(MenuEvent e) {
-		// TODO Auto-generated method stub
-		out.println(e);
-	}
-
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		out.println(e);
+		JMenuItem m = (JMenuItem)e.getSource();
+		
+		if (m.getText().equals("Make Suggestion")){
+			Person p = game.getCurPlayer();
+			System.out.println(p==null);
+			Tile t = board.tileAt(p.getX(), p.getY());
+			
+			if (!(t instanceof Room)){
+				return;
+			}
+			Room r = (Room) t;
+				
+			String[] sug = rumorWindow.makeRumor(r, window);
+			if (sug.length==3){
+				game.makeSuggestion(new Card(sug[0], null, Card.Type.WEAPON),
+						new Card(sug[1], null, Card.Type.ROOM),
+						new Card(sug[2], null, Card.Type.PERSON));
+			}
+			
+			
+		} else if (m.getText().equals("Make Accusation")){
+			Person p = game.getCurPlayer();
+			System.out.println(p==null);
+			Tile t = board.tileAt(p.getX(), p.getY());
+			
+			if (!(t instanceof Room)){
+				return;
+			}
+			Room r = (Room) t;
+				
+			String[] sug = rumorWindow.makeRumor(r, window);
+			if (sug.length==3){
+				game.MakeAcusation(new Card(sug[0], null, Card.Type.WEAPON),
+						new Card(sug[1], null, Card.Type.ROOM),
+						new Card(sug[2], null, Card.Type.PERSON));
+			}
+		} else if (m.getText().equals("New Game")){
+			game=new Game();
+		} else if (m.getText().equals("Exit")){
+			System.exit(0);
+		}
+		
+		out.println(m.getText());
+		canvas.repaint();
 	}
 }
