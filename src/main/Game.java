@@ -114,8 +114,18 @@ public class Game {
 	 * makes an accusation either winning the game, or removing the player
 	 * @return true if the game is won. False if the player is removed from play
 	 */
-	public boolean MakeAcusation(){
-		return false;
+	public boolean MakeAcusation(Card weapon, Card room, Card person){
+		if(murder.checkAcusation(weapon, person, room)){
+			game.GameOver.win();
+			return true;
+		}
+		else{
+			players.remove(currentPlayer);
+			if(players.isEmpty()){
+				game.GameOver.loose();
+			}
+			return false;
+		}
 	}
 	/**
 	 * moves the player to the inputed tile
