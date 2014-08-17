@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import GamePieces.Person;
 import Tiles.Corridor;
 import Tiles.Doorway;
 import Tiles.Room;
@@ -13,6 +14,12 @@ import Tiles.Tile;
 import Tiles.Wall;
 import board.BoardLoader.BoardReturn;
 
+/**
+ * Object to represent the games board, constructor is private and is called from a board loader
+ * 
+ * @author Elliot Wilde
+ *
+ */
 public class Board {
 	
 	// these here are a whole collection of statics, so that the board can be constructed
@@ -186,6 +193,21 @@ public class Board {
 			}
 		}
 		
+	}
+	/**
+	 * Is the tile at (x,y) a room
+	 * 
+	 */
+	public boolean isRoom(int x, int y){
+		return false;
+	}
+	
+	
+	/**
+	 * Can the person p move to the tile at (x,y)
+	 */
+	public boolean canMoveTo(Person p, int x, int y){
+		return false;
 	}
 	
 	/**

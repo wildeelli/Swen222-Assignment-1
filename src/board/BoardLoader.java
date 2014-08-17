@@ -44,7 +44,6 @@ public class BoardLoader {
 			if (line[0].startsWith("t")){
 				char token='\0';
 				String name="";
-				int type;
 				for (String l: line){
 					String[] tokens = l.split("=");
 					switch(tokens[0]){
@@ -55,7 +54,6 @@ public class BoardLoader {
 						name = tokens[1];
 						break;
 					case "r":
-						type = Integer.parseInt(tokens[1]);
 						break;
 						default:
 							System.out.println("unexpected token occured");
