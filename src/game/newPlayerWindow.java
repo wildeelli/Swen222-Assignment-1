@@ -151,6 +151,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	 * @return
 	 */
 	public boolean allPlayersDone(){
+		// this makes it actually work
 		setTitle(getTitle());
 		return playerRemain==players;
 	}
