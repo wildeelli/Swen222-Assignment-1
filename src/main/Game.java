@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import board.Board;
 import GamePieces.Acusation;
 import GamePieces.Card;
@@ -130,13 +132,13 @@ public class Game {
 	 */
 	public boolean MakeAcusation(Card weapon, Card room, Card person){
 		if(murder.checkAcusation(weapon, person, room)){
-			game.GameOver.win();
+			JOptionPane.showMessageDialog(null, "Conragulations you have won the game");
 			return true;
 		}
 		else{
 			players.remove(currentPlayer);
 			if(players.isEmpty()){
-				game.GameOver.loose();
+				JOptionPane.showMessageDialog(null,"BAD LACK \n Game Over");
 			}
 			return false;
 		}
