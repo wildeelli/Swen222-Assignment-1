@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import GamePieces.Card;
@@ -36,9 +37,9 @@ public class ProgMain implements MouseListener, ActionListener {
 	private JMenuItem[] menus;
 	private JButton[] buttons;
 	private BoardCanvas canvas;
-//	private JTextField textField;
-//	private JRadioButton[] radios;
 	private JFrame window;
+	
+	private static final Object[] possibilities = {1, 2, 3, 4, 5, 6};
 	
 	public static Board board;
 	
@@ -110,7 +111,20 @@ public class ProgMain implements MouseListener, ActionListener {
 		window.setVisible(true);
 		
 		// here we make a new game
-		game = new Game();
+		
+
+		
+		Integer s = (Integer)JOptionPane.showInputDialog(
+		                    window,
+		                    "How many Players in the game?",
+		                    "Customized Dialog",
+		                    JOptionPane.PLAIN_MESSAGE,
+		                    null,
+		                    possibilities,
+		                    1);
+		window.setEnabled(false);
+		game = new Game(s);
+		window.setEnabled(true);
 		Person p = game.getCurPlayer();
 		
 		
@@ -218,7 +232,17 @@ public class ProgMain implements MouseListener, ActionListener {
 						new Card(sug[2], null, Card.Type.PERSON));
 			}
 		} else if (m.getText().equals("New Game")){
-			game=new Game();
+			Integer s = (Integer)JOptionPane.showInputDialog(
+                    window,
+                    "How many Players in the game?",
+                    "Customized Dialog",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    possibilities,
+                    1);
+			window.setEnabled(false);
+			game = new Game(s);
+			window.setEnabled(true);
 		} else if (m.getText().equals("Exit")){
 			System.exit(0);
 		}

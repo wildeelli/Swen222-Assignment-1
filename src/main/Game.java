@@ -1,6 +1,8 @@
 package main;
 
 
+import game.newPlayerWindow;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,11 +21,16 @@ public class Game {
 	private List<Card> cards;
 	private Acusation murder;
 	private int currentPlayer;
+	private int playerCount;
 	
 	
 	
-	public Game(){
-		players = new ArrayList<Person>();//TODO: get the players from somewhere
+	public Game(int pcount){
+		playerCount=pcount;
+		players = new ArrayList<Person>(playerCount);//TODO: get the players from somewhere
+		
+		Person[] persons = newPlayerWindow.playerWindow(playerCount);
+		for (Person p: persons) players.add(p);
 		loadCards();
 		
 		//Shuffles the cards, and hands them out to players

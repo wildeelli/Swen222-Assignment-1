@@ -38,10 +38,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	
 	private GamePieces.Person[] playerList;
 	
-	private JFrame parent;
-	
-	
-	public newPlayerWindow(int playerCount, JFrame parent){
+	private newPlayerWindow(int playerCount){
 		super("New Player");
 		if (playerCount>6 || playerCount == 0) throw new IllegalArgumentException("Too many players");
 		setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -88,8 +85,6 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		setResizable(false);
 		pack();
 		setVisible(true);
-		this.parent = parent;
-		parent.setEnabled(false);
 		
 		players = playerRemain = playerCount;
 		playerRemain =0;
@@ -116,9 +111,17 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		if (allPlayersDone()){
 			this.setVisible(false);
 			this.setEnabled(false);
-			parent.setEnabled(true);
 		}
 		
+	}
+	
+	public static GamePieces.Person[] playerWindow(int playerCount){
+		newPlayerWindow n = new newPlayerWindow(playerCount);
+		while (!n.allPlayersDone()){
+			n.setTitle(n.getTitle());
+		};
+		
+		return n.players();
 	}
 	
 	
@@ -150,7 +153,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	 * Is the window done making new players
 	 * @return
 	 */
-	public boolean allPlayersDone(){
+	private boolean allPlayersDone(){
 		// this makes it actually work
 		setTitle(getTitle());
 		return playerRemain==players;
@@ -158,8 +161,8 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	
 	
 	// TODO: change to player type
-	public GamePieces.Person[] players(){
-		if (playerRemain!=0) throw new IllegalStateException("Not ready to return players");
+	private GamePieces.Person[] players(){
+		if (playerRemain!=players) throw new IllegalStateException("Not ready to return players");
 		return playerList;
 	}
 	
