@@ -52,75 +52,75 @@ public class Board {
 		this.startPositions = new boardTile[6];
 		int startposcount=0;
 		
-		navNode tiles [][] = new navNode[width][height];
-		List<navNode> nodes = new ArrayList<>();
+//		navNode tiles [][] = new navNode[width][height];
+		List<boardTile> nodes = new ArrayList<>();
 		
 		for (int x=0; x<width; ++x){
 			for (int y=0; y<height; ++y){
 				switch(b.board[x][y]){
 				// TODO: doorways?
 				case '0':
-					board[x][y] = new boardTile(wall);
+					board[x][y] = new boardTile(wall,x ,y);
 					break;
 				case '.':
-					board[x][y] = new boardTile(corridor);
+					board[x][y] = new boardTile(corridor,x ,y);
 					break;
 				case 'k':
-					board[x][y] = new boardTile(kitchen);
+					board[x][y] = new boardTile(kitchen,x ,y);
 					break;
 				case 'K':
-					board[x][y] = new boardTile(new Doorway(kitchen, x, y));
+					board[x][y] = new boardTile(new Doorway(kitchen, x, y),x ,y);
 					break;
 				case 'b':
-					board[x][y] = new boardTile(ballRoom);
+					board[x][y] = new boardTile(ballRoom,x ,y);
 					break;
 				case 'B':
-					board[x][y] = new boardTile(new Doorway(ballRoom, x, y));
+					board[x][y] = new boardTile(new Doorway(ballRoom, x, y),x ,y);
 					break;
 				case 'd':
-					board[x][y] = new boardTile(diningRoom);
+					board[x][y] = new boardTile(diningRoom,x ,y);
 					break;
 				case 'D':
-					board[x][y] = new boardTile(new Doorway(diningRoom, x, y));
+					board[x][y] = new boardTile(new Doorway(diningRoom, x, y),x ,y);
 					break;
 				case 'o':
-					board[x][y] = new boardTile(lounge);
+					board[x][y] = new boardTile(lounge,x ,y);
 					break;
 				case 'O':
-					board[x][y] = new boardTile(new Doorway(lounge, x, y));
+					board[x][y] = new boardTile(new Doorway(lounge, x, y),x ,y);
 					break;
 				case 'h':
-					board[x][y] = new boardTile(hall);
+					board[x][y] = new boardTile(hall,x ,y);
 					break;
 				case 'H':
-					board[x][y] = new boardTile(new Doorway(hall, x, y));
+					board[x][y] = new boardTile(new Doorway(hall, x, y),x ,y);
 					break;
 				case 't':
-					board[x][y] = new boardTile(study);
+					board[x][y] = new boardTile(study,x ,y);
 					break;
 				case 'T':
-					board[x][y] = new boardTile(new Doorway(study, x, y));
+					board[x][y] = new boardTile(new Doorway(study, x, y),x ,y);
 					break;
 				case 'l':
-					board[x][y] = new boardTile(library);
+					board[x][y] = new boardTile(library,x ,y);
 					break;
 				case 'L':
-					board[x][y] = new boardTile(new Doorway(library, x, y));
+					board[x][y] = new boardTile(new Doorway(library, x, y),x ,y);
 					break;
 				case 'i':
-					board[x][y] = new boardTile(billiardsRoom);
+					board[x][y] = new boardTile(billiardsRoom,x ,y);
 					break;
 				case 'I':
-					board[x][y] = new boardTile(new Doorway(billiardsRoom, x, y));
+					board[x][y] = new boardTile(new Doorway(billiardsRoom, x, y),x ,y);
 					break;
 				case 'c':
-					board[x][y] = new boardTile(conservatory);
+					board[x][y] = new boardTile(conservatory,x ,y);
 					break;
 				case 'C':
-					board[x][y] = new boardTile(new Doorway(conservatory, x, y));
+					board[x][y] = new boardTile(new Doorway(conservatory, x, y),x ,y);
 					break;
 				case 's':
-					board[x][y] = new boardTile(startPos);
+					board[x][y] = new boardTile(startPos,x ,y);
 					startPositions[startposcount] = board[x][y];
 					startposcount++;
 					break;
@@ -128,14 +128,14 @@ public class Board {
 						System.out.println("invalid character found in board");
 						System.exit(1);
 				}
-				nodes.add(tiles[x][y]=new navNode(x, y));
+				nodes.add(board[x][y]);
 				
 			}
 		}
 		for (int i=0; i<nodes.size(); ++i){
 			System.out.print(i);
 			System.out.print(' ');
-			nodes.get(i).build(tiles);
+			nodes.get(i).build(board);
 		}
 	}
 
@@ -210,7 +210,7 @@ public class Board {
 	 */
 	public boolean canMoveTo(Person p, int x, int y){
 		// TODO: pathfinding... Away!
-		p.
+		int moves = p.moves();
 		return false;
 	}
 	
@@ -229,66 +229,67 @@ public class Board {
 	}
 	
 	/**
-	 * Node used for pathfinding
+	 * This should probably be scrapped <br>
+	 * But I wanted the tiles on the board to be distinct from the 'room' type tiles
 	 * @author Bandit
 	 *
 	 */
-	private class navNode {
+	private class boardTile {
 		/**
 		 * All of the adjacent navNodes
 		 */
-		protected List<navNode> connected;
+		protected List<boardTile> connected;
 		/**
 		 * The x and y position of the navNode on the board
 		 */
 		protected final int x, y;
-		public navNode(int x, int y){
-			connected = new ArrayList<navNode>();
-			this.x = x; this.y = y;
-			
-		}
+		protected final Tile tile;
 		
-		public void build(navNode[][] others){
+		public boardTile(Tile t, int x, int y){
+			this.tile=t;
+			this.connected = new ArrayList<boardTile>();
+			this.x = x; this.y = y;
+		}
+
+		protected void build(boardTile[][] others){
 			if (board[x][y] == null){
 				throw new NullPointerException("part of the board hasn't been initialised");
 			}
-			if (board[x][y].tile instanceof Tiles.Doorway){ // we then need to handle things differently
-				Doorway door = (Doorway) board[x][y].tile;
+			// nothing to see here, really, you can't go here
+			if(!tile.moveable()) return;
+			// now things get interesting
+			if (tile instanceof Tiles.Doorway){ // we then need to handle things differently
+				Doorway door = (Doorway) tile;
 				List<Doorway> linkeddoors = door.room().doorways();
 				for (Doorway d: linkeddoors){
 					if (d!=door) connected.add(others[d.x][d.y]);
 				}
 //				System.out.println("doorway");
 			}
-				if (x>0){
-					if (board[x-1][y].tile.moveable()){
-						navNode other = others[x-1][y];
-						connected.add(other);
-					}
+			if (x>0){
+				if (board[x-1][y].tile.moveable()){
+					boardTile other = others[x-1][y];
+					connected.add(other);
 				}
-				if (x<width-1){
-					if (board[x+1][y].tile.moveable()){
-						navNode other = others[x+1][y];
-						connected.add(other);
-					}
+			}
+			if (x<width-1){
+				if (board[x+1][y].tile.moveable()){
+					boardTile other = others[x+1][y];
+					connected.add(other);
 				}
-				if (y>0){
-					if (board[x][y-1].tile.moveable()){
-						navNode other = others[x][y-1];
-						connected.add(other);
-					}
+			}
+			if (y>0){
+				if (board[x][y-1].tile.moveable()){
+					boardTile other = others[x][y-1];
+					connected.add(other);
 				}
-				if (y<height-1){
-					if (board[x][y+1].tile.moveable()){
-						navNode other = others[x][y+1];
-						connected.add(other);
-					}
+			}
+			if (y<height-1){
+				if (board[x][y+1].tile.moveable()){
+					boardTile other = others[x][y+1];
+					connected.add(other);
 				}
-			
-//			System.out.println(x + " " + y + " " + connected.size());
-			
-			
-			
+			}
 		}
 		
 		public boolean pathTo(int x, int y, int moves){
@@ -298,27 +299,13 @@ public class Board {
 			if (moves==0) {
 				return false;
 			}
-			for (navNode n: connected){
+			for (boardTile n: connected){
 				if (n.pathTo(x, y, moves-1))
 					return true;
 			}
 			return false;
 		}
 		
-	}
-	
-	/**
-	 * This should probably be scrapped <br>
-	 * But I wanted the tiles on the board to be distinct from the 'room' type tiles
-	 * @author Bandit
-	 *
-	 */
-	private class boardTile {
-		protected final Tile tile;
-		
-		public boardTile(Tile t){
-			tile=t;
-		}
 		
 	}
 }
