@@ -45,25 +45,25 @@ public class Game {
 		
 		//load rooms and select an index for murder location
 		ArrayList<Card> rooms = new ArrayList<Card>();
-		rooms.add(new Card("Ballroom","Ballroom.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Billiard Room","Billiard-room.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Conservatory","Conservatory.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Dining Room","Dining-room.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Hall","Hall.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Kitchen","Kitchen.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Library","Library.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Lounge","Lounge.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Study","Study.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Ballroom","assets/rooms/Ballroom.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Billiard Room","assets/rooms/Billiard-room.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Conservatory","assets/rooms/Conservatory.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Dining Room","assets/rooms/Dining-room.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Hall","assets/rooms/Hall.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Kitchen","assets/rooms/Kitchen.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Library","assets/rooms/Library.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Lounge","assets/rooms/Lounge.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Study","assets/rooms/Study.jpg",Card.Type.ROOM));
 		Collections.shuffle(rooms);
 		
 		//load people and select an index for murderer
 		ArrayList<Card> people = new ArrayList<Card>();
-		people.add(new Card("Colonel Mustard","Colonel-Mustard.jpg",Card.Type.PERSON));
-		people.add(new Card("Miss Scarlet","Miss-Scarlet.jpg",Card.Type.PERSON));
-		people.add(new Card("Mr Green","Mr-Green.jpg",Card.Type.PERSON));
-		people.add(new Card("Mrs Peacock","Mrs-Peacock.jpg",Card.Type.PERSON));
-		people.add(new Card("Mrs White","Mrs-White.jpg",Card.Type.PERSON));
-		people.add(new Card("Prof Plum","Prof-Plum.jpg",Card.Type.PERSON));
+		people.add(new Card("Colonel Mustard","assets/people/Colonel-Mustard.jpg",Card.Type.PERSON));
+		people.add(new Card("Miss Scarlet","assets/people/Miss-Scarlet.jpg",Card.Type.PERSON));
+		people.add(new Card("Mr Green","assets/people/Mr-Green.jpg",Card.Type.PERSON));
+		people.add(new Card("Mrs Peacock","assets/people/Mrs-Peacock.jpg",Card.Type.PERSON));
+		people.add(new Card("Mrs White","assets/people/Mrs-White.jpg",Card.Type.PERSON));
+		people.add(new Card("Prof Plum","assets/people/Prof-Plum.jpg",Card.Type.PERSON));
 		Collections.shuffle(people);
 		
 		//creates the correct acusation & removes those cards from the list

@@ -23,18 +23,18 @@ import board.BoardLoader.BoardReturn;
 public class Board {
 	
 	// these here are a whole collection of statics, so that the board can be constructed
-	private static final Tile corridor = new Corridor();
-	private static final Room kitchen = new Room("Kitchen");
-	private static final Tile wall = new Wall();
-	private static final Room ballRoom = new Room("Ball Room");
-	private static final Room diningRoom = new Room("Dining Room");
-	private static final Room lounge = new Room("Lounge");
-	private static final Room hall = new Room("Hall");
-	private static final Room study = new Room("Study");
-	private static final Room library = new Room("Library");
-	private static final Room billiardsRoom = new Room("Billiards Room");
-	private static final Room conservatory = new Room("Conservatory");
-	private static final Tile startPos = new Corridor();
+	public static final Tile corridor = new Corridor();
+	public static final Room kitchen = new Room("Kitchen");
+	public static final Tile wall = new Wall();
+	public static final Room ballRoom = new Room("Ball Room");
+	public static final Room diningRoom = new Room("Dining Room");
+	public static final Room lounge = new Room("Lounge");
+	public static final Room hall = new Room("Hall");
+	public static final Room study = new Room("Study");
+	public static final Room library = new Room("Library");
+	public static final Room billiardsRoom = new Room("Billiards Room");
+	public static final Room conservatory = new Room("Conservatory");
+	public static final Tile startPos = new Corridor();
 	
 	private boardTile board[][] = null;
 	private boardTile startPositions[] = null;

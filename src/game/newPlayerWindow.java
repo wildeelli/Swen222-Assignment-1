@@ -131,10 +131,6 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 				selected = (JRadioButton)b;
 				selected.setEnabled(false);
 			}
-//			if (selected!= null && b.isEnabled()){
-//				b.setSelected(true);
-//				continue;
-//			}
 		}
 		for (Enumeration<AbstractButton> buttons = choices.getElements(); buttons.hasMoreElements();){
 			AbstractButton b = buttons.nextElement();
