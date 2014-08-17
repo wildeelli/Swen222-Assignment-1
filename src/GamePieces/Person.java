@@ -89,7 +89,9 @@ public class Person {
 	
 	/**
 	 * moves the piece to said tile
-	 * @param newT the tile the piece is moving too
+	 * @param x the x position to move to
+	 * @param y the y position to move to
+	 * @param board the board to move on
 	 * @return True if the player moves. False if the player does not have enough on dice to move
 	 */
 	public boolean move(int x, int y,Board board){
