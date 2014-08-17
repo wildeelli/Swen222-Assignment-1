@@ -52,17 +52,16 @@ public class Person {
 	/**
 	 * moves the piece to said tile
 	 * @param newT the tile the piece is moving too
-	 * @param diceCount the number currently shown on the dice
 	 * @return True if the player moves. False if the player does not have enough on dice to move
 	 */
-	public boolean move(Tile newT, int diceCount){
+	public boolean move(Tile newT){
 		//TODO: route finding to get from tile to newT
 		return false;
 	}
 	
 	/**
 	 * Makes an accusation
-	 * @return True if the acusation is correct. False if it is wrong
+	 * @return True if the accusation is correct. False if it is wrong
 	 */
 	public boolean makeAcusation(){
 		//TODO: finish this
