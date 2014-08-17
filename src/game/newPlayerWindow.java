@@ -108,8 +108,8 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		}
 		String playerToken = selectedRadioButton();
 		// TODO: now we need to add this 'player' to the list of players
-		
-		GamePieces.Person player = new GamePieces.Person(playerName, playerToken, ProgMain.board.getNextStartPosition());
+		int[] loc = ProgMain.board.getNextStartPosition();
+		GamePieces.Person player = new GamePieces.Person(playerName, playerToken, loc[0], loc[1]);
 		playerList[playerRemain] = player;
 		
 		playerRemain++;

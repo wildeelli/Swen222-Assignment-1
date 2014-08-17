@@ -8,6 +8,7 @@ import Tiles.*;
 
 public class Person {
 	private Tile loc;
+	private int xloc, yloc;
 	private String name;
 	private String col;
 	private List<Card> hand;
@@ -21,10 +22,11 @@ public class Person {
 	 * @param col Colour of the person
 	 * @param loc Tile in which the person starts from
 	 */
-	public Person(String name, String col, Tile loc){
+	public Person(String name, String col, int x, int y){
 		this.name = name;
 		this.col = col;
-		this.loc = loc;
+		this.xloc = x;
+		this.yloc = y;
 		this.hand = new ArrayList<Card>();
 		this.diceOne = new Random();
 		this.diceTwo = new Random();

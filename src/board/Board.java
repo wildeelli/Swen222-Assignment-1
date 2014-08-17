@@ -224,8 +224,10 @@ public class Board {
 		return board[x][y].tile;
 	}
 	
-	public Tile getNextStartPosition(){
-		return startPositions[curStartPos++].tile;
+	public int[] getNextStartPosition(){
+		boardTile s = startPositions[curStartPos++];
+		return new int[]{s.x, s.y};
+//		return startPositions[curStartPos++].tile;
 	}
 	
 	/**
