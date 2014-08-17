@@ -38,6 +38,7 @@ public class Board {
 	
 	private boardTile board[][] = null;
 	private boardTile startPositions[] = null;
+	private int curStartPos =0;
 	
 	private final int width;
 	private final int height;
@@ -57,7 +58,7 @@ public class Board {
 		for (int x=0; x<width; ++x){
 			for (int y=0; y<height; ++y){
 				switch(b.board[x][y]){
-				// TODO: doorways
+				// TODO: doorways?
 				case '0':
 					board[x][y] = new boardTile(wall);
 					break;
@@ -200,7 +201,7 @@ public class Board {
 	 * 
 	 */
 	public boolean isRoom(int x, int y){
-		return false;
+		return board[x][y].tile.isRoom();
 	}
 	
 	
@@ -208,6 +209,8 @@ public class Board {
 	 * Can the person p move to the tile at (x,y)
 	 */
 	public boolean canMoveTo(Person p, int x, int y){
+		// TODO: pathfinding... Away!
+		p.
 		return false;
 	}
 	
@@ -218,7 +221,11 @@ public class Board {
 	 * @return The tile at (x,y), or <b><i>null</i></b> if no tile
 	 */
 	public Tile tileAt(int x, int y){
-		return null;
+		return board[x][y].tile;
+	}
+	
+	public Tile getNextStartPosition(){
+		return startPositions[curStartPos++].tile;
 	}
 	
 	/**
@@ -251,7 +258,7 @@ public class Board {
 				for (Doorway d: linkeddoors){
 					if (d!=door) connected.add(others[d.x][d.y]);
 				}
-				System.out.println("doorway");
+//				System.out.println("doorway");
 			}
 				if (x>0){
 					if (board[x-1][y].tile.moveable()){
@@ -278,10 +285,24 @@ public class Board {
 					}
 				}
 			
-			System.out.println(x + " " + y + " " + connected.size());
+//			System.out.println(x + " " + y + " " + connected.size());
 			
 			
 			
+		}
+		
+		public boolean pathTo(int x, int y, int moves){
+			if (x==this.x && y==this.y){
+				return true;
+			}
+			if (moves==0) {
+				return false;
+			}
+			for (navNode n: connected){
+				if (n.pathTo(x, y, moves-1))
+					return true;
+			}
+			return false;
 		}
 		
 	}

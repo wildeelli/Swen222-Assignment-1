@@ -1,26 +1,24 @@
 package game;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import main.ProgMain;
 
 public class newPlayerWindow extends JFrame implements ActionListener{
 	private static final long serialVersionUID = -62119174601237503L;
@@ -38,7 +36,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	private int players;
 	private int playerRemain;
 	
-	private Object[] playerList;
+	private GamePieces.Person[] playerList;
 	
 	private JFrame parent;
 	
@@ -95,7 +93,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		
 		players = playerRemain = playerCount;
 		playerRemain =0;
-		playerList = new Object[players];
+		playerList = new GamePieces.Person[players];
 		
 	}
 	
@@ -110,6 +108,9 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		}
 		String playerToken = selectedRadioButton();
 		// TODO: now we need to add this 'player' to the list of players
+		
+		GamePieces.Person player = new GamePieces.Person(playerName, playerToken, ProgMain.board.getNextStartPosition());
+		playerList[playerRemain] = player;
 		
 		playerRemain++;
 		if (allPlayersDone()){
@@ -155,7 +156,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	
 	
 	// TODO: change to player type
-	public Object[] players(){
+	public GamePieces.Person[] players(){
 		if (playerRemain!=0) throw new IllegalStateException("Not ready to return players");
 		return null;
 	}

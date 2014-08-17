@@ -63,6 +63,15 @@ public class Person {
 	}
 	
 	/**
+	 * Does not roll the dice or update the number of moves the player has.<br>
+	 * Should only be called after rollDice() in a turn
+	 * @return The number of moves the player has for this turn
+	 */
+	public int moves(){
+		return movesLeft;
+	}
+	
+	/**
 	 * moves the piece to said tile
 	 * @param newT the tile the piece is moving too
 	 * @return True if the player moves. False if the player does not have enough on dice to move

@@ -41,7 +41,7 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 	private JRadioButton[] radios;
 	private JFrame window;
 	
-	private final Board board;
+	public static Board board;
 	
 	
 	
