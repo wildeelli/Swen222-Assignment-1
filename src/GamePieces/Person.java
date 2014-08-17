@@ -47,7 +47,6 @@ public class Person {
 	public Tile getLoc(){return loc;}
 	
 	/**
-	 * 
 	 * @return the x Location on the board of the player
 	 */
 	public int getX(){
@@ -55,7 +54,6 @@ public class Person {
 	}
 	
 	/**
-	 * 
 	 * @return the y location on the board of the player
 	 */
 	public int getY(){

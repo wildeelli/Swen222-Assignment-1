@@ -211,7 +211,10 @@ public class Board {
 	public boolean canMoveTo(Person p, int x, int y){
 		// TODO: pathfinding... Away!
 		int moves = p.moves();
-		return false;
+		int px = p.getX();
+		int py = p.getY();
+		
+		return board[px][py].pathTo(x, y, moves);
 	}
 	
 	/**
