@@ -17,9 +17,9 @@ public class Person {
 	
 	/**
 	 * 
+	 * @param name The name of the player
 	 * @param col Colour of the person
 	 * @param loc Tile in which the person starts from
-	 * @param h The person's hand
 	 */
 	public Person(String name, String col, Tile loc){
 		this.name = name;
@@ -30,6 +30,10 @@ public class Person {
 		this.diceTwo = new Random();
 	}
 	
+	/**
+	 * Adds cards to the players hands
+	 * @param cards List of cards to be added to the players hand
+	 */
 	public void giveCards(List<Card> cards){
 		hand.addAll(cards);
 	}
