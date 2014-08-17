@@ -1,4 +1,5 @@
 package GamePieces;
+import java.util.List;
 import java.util.Random;
 
 import Tiles.*;
@@ -7,7 +8,7 @@ import Tiles.*;
 public class Person {
 	private Tile loc;
 	private String col;
-	private Hand hand;
+	private List<Card> hand;
 	private Random diceOne;
 	private Random diceTwo;
 	private int movesLeft;
@@ -18,7 +19,7 @@ public class Person {
 	 * @param loc Tile in which the person starts from
 	 * @param h The person's hand
 	 */
-	public Person(String col, Tile loc, Hand h){
+	public Person(String col, Tile loc, List<Card> h){
 		this.col = col;
 		this.loc = loc;
 		this.hand = h;
