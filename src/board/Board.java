@@ -133,8 +133,8 @@ public class Board {
 			}
 		}
 		for (int i=0; i<nodes.size(); ++i){
-			System.out.print(i);
-			System.out.print(' ');
+//			System.out.print(i);
+//			System.out.print(' ');
 			nodes.get(i).build(board);
 		}
 	}
