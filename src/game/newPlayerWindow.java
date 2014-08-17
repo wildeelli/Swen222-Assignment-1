@@ -40,12 +40,14 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 	
 	private Object[] playerList;
 	
+	private JFrame parent;
 	
-	public newPlayerWindow(int playerCount){
+	
+	public newPlayerWindow(int playerCount, JFrame parent){
 		super("New Player");
 		if (playerCount>6 || playerCount == 0) throw new IllegalArgumentException("Too many players");
 		setLayout(new FlowLayout(FlowLayout.LEFT));
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		// make the name box
 		JLabel text = new JLabel("Player Name: ");
 		enterName=new JTextField(20);
@@ -88,6 +90,8 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		setResizable(false);
 		pack();
 		setVisible(true);
+		this.parent = parent;
+		parent.setEnabled(false);
 		
 		players = playerRemain = playerCount;
 		playerRemain =0;
@@ -100,7 +104,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		if (playerName == null || playerName.length()==0){
 			JOptionPane.showMessageDialog(this,
 				    "Player Name is too short.",
-				    "Inane warning",
+				    "Data input Error: please try again on tuesday",
 				    JOptionPane.WARNING_MESSAGE);
 			return;
 		}
@@ -111,6 +115,7 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		if (allPlayersDone()){
 			this.setVisible(false);
 			this.setEnabled(false);
+			parent.setEnabled(true);
 		}
 		
 	}
@@ -120,15 +125,27 @@ public class newPlayerWindow extends JFrame implements ActionListener{
 		JRadioButton selected=null;
 		for (Enumeration<AbstractButton> buttons = choices.getElements(); buttons.hasMoreElements();){
 			AbstractButton b = buttons.nextElement();
-			if (b.isSelected()){
+			if (!b.isEnabled())
+				continue;
+			if (b.isSelected() && selected==null){
 				selected = (JRadioButton)b;
 				selected.setEnabled(false);
 			}
-			if (selected!= null && b.isEnabled()){
-				b.setSelected(true);
-				continue;
-			}
+//			if (selected!= null && b.isEnabled()){
+//				b.setSelected(true);
+//				continue;
+//			}
 		}
+		for (Enumeration<AbstractButton> buttons = choices.getElements(); buttons.hasMoreElements();){
+			AbstractButton b = buttons.nextElement();
+			if (!b.isEnabled())
+				continue;
+			b.setSelected(true);
+			break;
+		}
+		
+		
+		
 		return selected.getText();
 	}
 	

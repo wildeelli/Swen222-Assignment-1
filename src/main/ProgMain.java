@@ -97,7 +97,7 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		
 		window.setVisible(true);
 		
-		new newPlayerWindow(3);
+		newPlayerWindow w = new newPlayerWindow(3, window);
 		
 		// remove this line when board construction is complete
 //		System.exit(0);
