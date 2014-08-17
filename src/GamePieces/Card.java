@@ -5,7 +5,7 @@ import java.awt.Image;
 public class Card {
 	
 	private String name;
-	private Image image;
+	private String image;
 	private Type type;
 	
 	public enum Type{
@@ -17,7 +17,7 @@ public class Card {
 	 * @param image The image to represent the card on the board
 	 * @param type The enum type for the card
 	 */
-	public Card(String name, Image image, Type type){
+	public Card(String name, String image, Type type){
 		this.name = name;
 		this.image = image;
 		this.type = type;
@@ -31,9 +31,9 @@ public class Card {
 	
 	/**
 	 * Get's the image representing the card
-	 * @return the image representing the card
+	 * @return the image location for the card
 	 */
-	public Image getImage(){return image;}
+	public String getImage(){return image;}
 	
 	/**
 	 * Get's the type of card
