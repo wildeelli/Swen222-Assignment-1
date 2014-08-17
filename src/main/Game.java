@@ -96,7 +96,7 @@ public class Game {
 		//loops through the players giving them hands
 		for(Person player: players){
 			ArrayList<Card> hand = new ArrayList<Card>();
-			for(int i = 0; i <= numCards; i++){
+			for(int i = 0; i < numCards; i++){
 				hand.add(cards.remove(0));
 			}
 			if(spareCards >= 1){
