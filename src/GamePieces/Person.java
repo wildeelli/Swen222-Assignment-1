@@ -47,6 +47,23 @@ public class Person {
 	public Tile getLoc(){return loc;}
 	
 	/**
+	 * 
+	 * @return the x Location on the board of the player
+	 */
+	public int getX(){
+		return xloc;
+	}
+	
+	/**
+	 * 
+	 * @return the y location on the board of the player
+	 */
+	public int getY(){
+		return yloc;
+	}
+	
+	
+	/**
 	 * Get's the pieces colour
 	 * @return The colour of the piece
 	 */
