@@ -91,7 +91,7 @@ public class rumorWindow extends JFrame implements ActionListener {
 	 * 
 	 * @param currentRoom The room that the player is currently in.
 	 * @param parent The parent window (so we can disable it).
-	 * @return A length 3 string array {person, room, weapon}, or null if the player clicked cancel.
+	 * @return A length 3 string array {weapon, person, room}, or null if the player clicked cancel.
 	 */
 	public static String[] makeRumor(Room currentRoom, JFrame parent){
 		rumorWindow r = new rumorWindow(currentRoom);
@@ -110,7 +110,7 @@ public class rumorWindow extends JFrame implements ActionListener {
 		}
 		dispose();
 		setVisible(false);
-		rumor = new String[]{p, room, w};
+		rumor = new String[]{w, p, room};
 	}
 	
 	private String selectedRadioButton(ButtonGroup group){
