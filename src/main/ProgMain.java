@@ -1,5 +1,7 @@
 package main;
 
+import game.newPlayerWindow;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -94,6 +96,8 @@ public class ProgMain implements MouseListener, MenuListener, ActionListener {
 		
 		
 		window.setVisible(true);
+		
+		new newPlayerWindow(3);
 		
 		// remove this line when board construction is complete
 //		System.exit(0);
