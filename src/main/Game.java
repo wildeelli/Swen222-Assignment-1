@@ -113,6 +113,18 @@ public class Game {
 	}
 	
 	/**
+	 * Make a suggestion that can be disproved by other players
+	 * @param weapon weapon used
+	 * @param room room it was in
+	 * @param person person you suspect
+	 * @return true if no one can object, otherwise false. Currently doesn't work
+	 */
+	public boolean makeSuggestion(Card weapon, Card room, Card person){
+		
+		return false;
+	}
+	
+	/**
 	 * makes an accusation either winning the game, or removing the player
 	 * @return true if the game is won. False if the player is removed from play
 	 */
