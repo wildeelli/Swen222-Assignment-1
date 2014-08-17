@@ -102,14 +102,5 @@ public class Person {
 		}
 		return false;
 	}
-	
-	/**
-	 * Makes an accusation
-	 * @return True if the accusation is correct. False if it is wrong
-	 */
-	public boolean makeAcusation(){
-		//TODO: finish this
-		return false;
-	}
 
 }
