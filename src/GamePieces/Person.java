@@ -1,5 +1,6 @@
 package GamePieces;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -38,6 +39,7 @@ public class Person {
 	 */
 	public void giveCards(List<Card> cards){
 		hand.addAll(cards);
+		System.out.println(name + " " + hand.size());
 	}
 	
 	
@@ -85,6 +87,14 @@ public class Person {
 	 */
 	public int moves(){
 		return movesLeft;
+	}
+	
+	/**
+	 * Returns the contents of the players hand.
+	 * @return An unmodifiable view of the players hand
+	 */
+	public List<Card> getHand(){
+		return Collections.unmodifiableList(hand);
 	}
 	
 	/**

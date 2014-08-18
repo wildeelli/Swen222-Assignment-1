@@ -13,7 +13,6 @@ import board.Board;
 import GamePieces.Acusation;
 import GamePieces.Card;
 import GamePieces.Person;
-import Tiles.Tile;
 
 public class Game {
 	
@@ -36,6 +35,7 @@ public class Game {
 		//Shuffles the cards, and hands them out to players
 		distributCards();
 		currentPlayer = 0;
+		main.ProgMain.main.drawNewHand(getCurPlayer());
 	}
 	
 	/**
@@ -48,7 +48,7 @@ public class Game {
 		weapons.add(new Card("Candlestick", "assets/weapons/Candlestick-1949.png", Card.Type.WEAPON));
 		weapons.add(new Card("Knife","assets/weapons/Knife-1949.png", Card.Type.WEAPON));
 		weapons.add(new Card("Lead Pipe","assets/weapons/Lead-Pipe-1949.png", Card.Type.WEAPON));
-		weapons.add(new Card("Revolver","assets/weapons/Revoler-1949.png", Card.Type.WEAPON));
+		weapons.add(new Card("Revolver","assets/weapons/Revolver-1949.png", Card.Type.WEAPON));
 		weapons.add(new Card("Rope","assets/weapons/Rope-1949.png", Card.Type.WEAPON));
 		weapons.add(new Card("Wrench","assets/weapons/Wrench-1949.png", Card.Type.WEAPON));
 		Collections.shuffle(weapons);
@@ -56,9 +56,9 @@ public class Game {
 		//load rooms and select an index for murder location
 		ArrayList<Card> rooms = new ArrayList<Card>();
 		rooms.add(new Card("Ballroom","assets/rooms/Ballroom.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Billiard Room","assets/rooms/Billiard-room.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Billiards Room","assets/rooms/Billiards-room.jpg",Card.Type.ROOM));
 		rooms.add(new Card("Conservatory","assets/rooms/Conservatory.jpg",Card.Type.ROOM));
-		rooms.add(new Card("Dining Room","assets/rooms/Dining-room.jpg",Card.Type.ROOM));
+		rooms.add(new Card("Dining Room","assets/rooms/Dining-Room.jpg",Card.Type.ROOM));
 		rooms.add(new Card("Hall","assets/rooms/Hall.jpg",Card.Type.ROOM));
 		rooms.add(new Card("Kitchen","assets/rooms/Kitchen.jpg",Card.Type.ROOM));
 		rooms.add(new Card("Library","assets/rooms/Library.jpg",Card.Type.ROOM));
@@ -76,7 +76,7 @@ public class Game {
 		people.add(new Card("Prof Plum","assets/people/Prof-Plum.jpg",Card.Type.PERSON));
 		Collections.shuffle(people);
 		
-		//creates the correct acusation & removes those cards from the list
+		//creates the correct accusation & removes those cards from the list
 		murder = new Acusation(weapons.remove(0), people.remove(0), rooms.remove(0));
 		
 		//finally merges the three lists to a single list
@@ -175,11 +175,10 @@ public class Game {
 	public void endTurn(){
 		if(players.isEmpty())
 			return;
-		if(currentPlayer < players.size()){
-			currentPlayer++;
-		}
-		else{
-			currentPlayer =0;
-		}
+		currentPlayer++;
+		if (currentPlayer >= players.size())
+			currentPlayer=0;
+		System.out.println(main.ProgMain.main==null);
+		main.ProgMain.main.drawNewHand(getCurPlayer());
 	}
 }
